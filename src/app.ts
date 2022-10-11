@@ -10,8 +10,12 @@ app.get('/fighter', async (req, res) => {
   //Todo: request validation
   const food = String(req.query.name)
   const fineliFood = await fetchFood(food)
-  const fighter = createFighter(fineliFood)
-  res.send(fighter);
+  if (fineliFood) {
+    const fighter = createFighter(fineliFood)
+    res.send(fighter);
+  } else {
+    res.status(404).send('Fighter not found');
+  }
 });
 
 app.listen(port, () => {
