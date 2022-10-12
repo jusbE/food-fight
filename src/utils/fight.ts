@@ -58,5 +58,7 @@ export const fight = async (fighter1: FoodFighter, fighter2: FoodFighter): Promi
   const winner = await theFight
   clearInterval(intervalId1)
   clearInterval(intervalId2)
-  return createBattleLog(Date.toString(), fighter1.name, fighter2.name, winner, events)
+  const dateTime = new Date()
+  //Todo: fix timezone
+  return createBattleLog(dateTime.toISOString(), fighter1.name, fighter2.name, winner, events)
 }
