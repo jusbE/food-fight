@@ -33,3 +33,12 @@ export const fetchFood = async (foodName: string): Promise<FineliFood | undefine
     }
   }
 }
+
+export const fetchFoodNames = async (foodName: string): Promise<String[]> => {
+  const names: string[] = []
+  const res = (await axios.get<FineliResponse>(`${FINELI_BASE_URL}${foodName}`)).data
+  if (res) {
+    names.push(...res.map(food => food.name.fi).filter((name) => !name.includes(',')))
+  }
+  return names
+}

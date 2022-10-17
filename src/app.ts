@@ -1,10 +1,13 @@
 import express from 'express';
-import { fetchFood } from './integrations/fineliApi';
+import cors from 'cors'
+import { fetchFood, fetchFoodNames } from './integrations/fineliApi';
 import { fight } from './utils/fight';
 import { createFighter } from './utils/fighterUtils';
 
 const app = express();
-const port = 3000;
+const port = 3001;
+
+app.use(cors())
 
 //Todo: swagger doc
 app.get('/fighter', async (req, res) => {
@@ -14,6 +17,17 @@ app.get('/fighter', async (req, res) => {
   if (fineliFood) {
     const fighter = createFighter(fineliFood)
     res.send(fighter);
+  } else {
+    res.status(404).send('Fighter not found');
+  }
+});
+
+app.get('/fighterNames', async (req, res) => {
+  //Todo: request validation
+  const name = String(req.query.name)
+  const fineliFood = await fetchFoodNames(name)
+  if (fineliFood) {
+    res.send(fineliFood);
   } else {
     res.status(404).send('Fighter not found');
   }
