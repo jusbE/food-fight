@@ -4,6 +4,7 @@ export interface FoodFighter {
   attack: number,
   defence: number,
   speed: number,
+  appearance: string,
 }
 
 export interface FineliFood {

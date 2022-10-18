@@ -3,6 +3,7 @@ import cors from 'cors'
 import { fetchFood, fetchFoodNames } from './integrations/fineliApi';
 import { fight } from './utils/fight';
 import { createFighter } from './utils/fighterUtils';
+import { getFighterImage } from './integrations/googleApi';
 
 const app = express();
 const port = 3001;
@@ -15,7 +16,8 @@ app.get('/fighter', async (req, res) => {
   const food = String(req.query.name)
   const fineliFood = await fetchFood(food)
   if (fineliFood) {
-    const fighter = createFighter(fineliFood)
+    const appearance = await getFighterImage(fineliFood.name.en)
+    const fighter = createFighter(fineliFood, appearance)
     res.send(fighter);
   } else {
     res.status(404).send('Fighter not found');
