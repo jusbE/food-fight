@@ -16,7 +16,7 @@ app.get('/fighter', async (req, res) => {
   const food = String(req.query.name)
   const fineliFood = await fetchFood(food)
   if (fineliFood) {
-    const appearance = await getFighterImage(fineliFood.name.en)
+    const appearance = await getFighterImage(fineliFood.name.en, fineliFood.name.fi)
     const fighter = createFighter(fineliFood, appearance)
     res.send(fighter);
   } else {
