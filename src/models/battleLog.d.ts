@@ -1,7 +1,9 @@
 interface BattleEvent {
   eventTime: string
   attacker: string
+  attackerLink: string
   defender: string
+  defenderLink: string
   damage: string
   defenderHealth: string
 }

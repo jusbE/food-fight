@@ -53,8 +53,10 @@ app.get('/fight', async (req, res) => {
     const fineliFood1 = await fetchFood(food1)
     const fineliFood2 = await fetchFood(food2)
     if (fineliFood1 && fineliFood2) {
-      const fighter1 = createFighter(fineliFood1)
-      const fighter2 = createFighter(fineliFood2)
+      const appearance1 = await getFighterImage(fineliFood1.name.en, fineliFood1.name.fi)
+      const appearance2 = await getFighterImage(fineliFood2.name.en, fineliFood2.name.fi)
+      const fighter1 = createFighter(fineliFood1, appearance1)
+      const fighter2 = createFighter(fineliFood2, appearance2)
       const result = await fight(fighter1, fighter2)
       res.send(result);
     } else {

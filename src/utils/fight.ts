@@ -5,11 +5,13 @@ const calculateDamage = (attack: number, defence: number): number => {
   return attack * (1 - (defence / 100))
 }
 
-const recordEvent = (eventTime: string, attacker: string, defender: string, damage: number, defenderHealth: number): BattleEvent => {
+const recordEvent = (eventTime: string, attacker: string, attackerLink: string, defender: string, defenderLink: string, damage: number, defenderHealth: number): BattleEvent => {
   return {
     eventTime,
     attacker,
+    attackerLink,
     defender,
+    defenderLink,
     damage: damage.toFixed(1),
     defenderHealth: defenderHealth.toFixed(1),
   }
@@ -41,7 +43,7 @@ export const fight = async (fighter1: FoodFighter, fighter2: FoodFighter): Promi
     intervalId1 = setInterval(() => {
       const durationSeconds = ((Date.now() - startTime) / 1000).toFixed(2)
       health2 = health2 - damage1
-      events.push(recordEvent(durationSeconds, fighter1.name, fighter2.name, damage1, health2))
+      events.push(recordEvent(durationSeconds, fighter1.name, fighter1.appearance, fighter2.name, fighter2.appearance, damage1, health2))
       if (health2 <= 0) {
         resolve(fighter1.name);
       }
@@ -49,7 +51,7 @@ export const fight = async (fighter1: FoodFighter, fighter2: FoodFighter): Promi
     intervalId2 = setInterval(() => {
       const durationSeconds = ((Date.now() - startTime) / 1000).toFixed(2)
       health1 = health1 - damage2
-      events.push(recordEvent(durationSeconds, fighter2.name, fighter1.name, damage2, health1))
+      events.push(recordEvent(durationSeconds, fighter2.name, fighter2.appearance, fighter1.name, fighter1.appearance, damage2, health1))
       if (health1 <= 0) {
         resolve(fighter2.name);
       }
