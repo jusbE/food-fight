@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Solidabis koodihaaste 2022",
   "main": "index.js",
+  "engines": { "node": "16.17.0" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "postinstall": "tsc"
   },
   "repository": {
     "type": "git",
