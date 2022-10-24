@@ -4,9 +4,10 @@ import { fetchFood, fetchFoodNames } from './integrations/fineliApi';
 import { fight } from './utils/fight';
 import { createFighter } from './utils/fighterUtils';
 import { getFighterImage } from './integrations/googleApi';
+import { config } from './utils/config';
 
 const app = express();
-const port = 3001;
+const port = config.server.port;
 
 app.use(cors())
 

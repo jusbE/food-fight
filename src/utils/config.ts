@@ -1,4 +1,7 @@
 export interface Config {
+  server: {
+    port: number,
+  }
   integrations: {
     google: {
       baseUrl: string
@@ -20,6 +23,9 @@ const getEnvVariable = (key: string): string => {
 }
 
 export const config: Config = {
+  server: {
+    port: Number(getEnvVariable('SERVER_PORT')),
+  },
   integrations: {
     google: {
       baseUrl: 'https://customsearch.googleapis.com/customsearch/v1',
