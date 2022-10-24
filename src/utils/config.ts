@@ -24,7 +24,7 @@ const getEnvVariable = (key: string): string => {
 
 export const config: Config = {
   server: {
-    port: Number(getEnvVariable('SERVER_PORT')),
+    port: Number(getEnvVariable('PORT')),
   },
   integrations: {
     google: {
