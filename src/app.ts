@@ -5,6 +5,7 @@ import { fight } from './utils/fight';
 import { createFighter } from './utils/fighterUtils';
 import { getFighterImage } from './integrations/googleApi';
 import { config } from './utils/config';
+import { getFighter, getFighterNames, getFightResult } from './handler';
 
 const app = express();
 const port = config.server.port;
@@ -15,16 +16,15 @@ app.use(cors())
 app.get('/fighter', async (req, res) => {
   //Todo: request validation'
   try {
-    const food = String(req.query.name)
-    const fineliFood = await fetchFood(food)
-    if (fineliFood) {
-      const appearance = await getFighterImage(fineliFood.name.en, fineliFood.name.fi)
-      const fighter = createFighter(fineliFood, appearance)
+    const foodName = String(req.query.name)
+    const fighter = getFighter(foodName)
+    if (fighter) {
       res.send(fighter);
     } else {
       res.status(404).send('Fighter not found');
     }
   } catch (err) {
+    //TODO: create logger
     console.error(JSON.stringify(err))
     res.status(500).send('Internal error occured')
   }
@@ -33,33 +33,23 @@ app.get('/fighter', async (req, res) => {
 app.get('/fighterNames', async (req, res) => {
   //Todo: request validation
   try {
-    const name = String(req.query.name)
-    const fineliFood = await fetchFoodNames(name)
-    if (fineliFood) {
-      res.send(fineliFood);
-    } else {
-      res.status(404).send('Fighter not found');
-    }
+    const prefix = String(req.query.prefix)
+    const fighterNames = await getFighterNames(prefix)
+    res.send(fighterNames);
   } catch (err) {
     console.error(JSON.stringify(err))
     res.status(500).send('Internal error occured')
   }
 });
 
-app.get('/fight', async (req, res) => {
+app.get('/fightResult', async (req, res) => {
   //Todo: request validation
   try {
     const food1 = String(req.query.name1)
     const food2 = String(req.query.name2)
-    const fineliFood1 = await fetchFood(food1)
-    const fineliFood2 = await fetchFood(food2)
-    if (fineliFood1 && fineliFood2) {
-      const appearance1 = await getFighterImage(fineliFood1.name.en, fineliFood1.name.fi)
-      const appearance2 = await getFighterImage(fineliFood2.name.en, fineliFood2.name.fi)
-      const fighter1 = createFighter(fineliFood1, appearance1)
-      const fighter2 = createFighter(fineliFood2, appearance2)
-      const result = await fight(fighter1, fighter2)
-      res.send(result);
+    const fightResult = getFightResult(food1, food2)
+    if (fightResult) {
+      res.send(fightResult);
     } else {
       res.status(404).send('Fighter(s) not found');
     }
