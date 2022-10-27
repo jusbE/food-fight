@@ -1,9 +1,5 @@
 import express from 'express';
 import cors from 'cors'
-import { fetchFood, fetchFoodNames } from './integrations/fineliApi';
-import { fight } from './utils/fight';
-import { createFighter } from './utils/fighterUtils';
-import { getFighterImage } from './integrations/googleApi';
 import { config } from './utils/config';
 import { getFighter, getFighterNames, getFightResult } from './handler';
 
