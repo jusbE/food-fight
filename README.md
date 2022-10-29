@@ -3,6 +3,12 @@ Solidabis koodihaaste 2022
 
 # Summary
 
+Integrations used:
+- Fineli API (https://fineli.fi/fineli/api/v1/foods)
+  - Get base stats for food fighters.
+- Google custom search API (https://customsearch.googleapis.com/customsearch/v1)
+  - Get image based on foodname. If english name does not return any hits it tries to find in finnish.
+
 Implementation is based on expressjs. This backend exposes 3 apis:
 - GET /fighter?name={name}
   - returns food fighter with converted stats in json format
