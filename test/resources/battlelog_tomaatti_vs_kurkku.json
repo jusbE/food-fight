@@ -1,0 +1,52 @@
+{
+    "fighter1": "Tomaatti",
+    "fighter2": "Kurkku",
+    "winner": "Tomaatti",
+    "events": [
+        {
+            "eventTime": "0.23",
+            "attacker": "Tomaatti",
+            "attackerLink": "linktopicture.fi",
+            "defender": "Kurkku",
+            "defenderLink": "linktopicture.fi",
+            "damage": "3.5",
+            "defenderHealth": "7.8"
+        },
+        {
+            "eventTime": "0.47",
+            "attacker": "Tomaatti",
+            "attackerLink": "linktopicture.fi",
+            "defender": "Kurkku",
+            "defenderLink": "linktopicture.fi",
+            "damage": "3.5",
+            "defenderHealth": "4.3"
+        },
+        {
+            "eventTime": "0.48",
+            "attacker": "Kurkku",
+            "attackerLink": "linktopicture.fi",
+            "defender": "Tomaatti",
+            "defenderLink": "linktopicture.fi",
+            "damage": "1.4",
+            "defenderHealth": "21.3"
+        },
+        {
+            "eventTime": "0.70",
+            "attacker": "Tomaatti",
+            "attackerLink": "linktopicture.fi",
+            "defender": "Kurkku",
+            "defenderLink": "linktopicture.fi",
+            "damage": "3.5",
+            "defenderHealth": "0.9"
+        },
+        {
+            "eventTime": "0.93",
+            "attacker": "Tomaatti",
+            "attackerLink": "linktopicture.fi",
+            "defender": "Kurkku",
+            "defenderLink": "linktopicture.fi",
+            "damage": "3.5",
+            "defenderHealth": "-2.6"
+        }
+    ]
+}

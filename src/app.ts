@@ -13,7 +13,7 @@ app.get('/fighter', async (req, res) => {
   //Todo: request validation'
   try {
     const foodName = String(req.query.name)
-    const fighter = getFighter(foodName)
+    const fighter = await getFighter(foodName)
     if (fighter) {
       res.send(fighter);
     } else {

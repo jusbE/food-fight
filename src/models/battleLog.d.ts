@@ -9,7 +9,6 @@ interface BattleEvent {
 }
 
 export interface BattleLog {
-  timestamp: string
   fighter1: string
   fighter2: string
   winner: string

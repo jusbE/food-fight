@@ -17,9 +17,8 @@ const recordEvent = (eventTime: string, attacker: string, attackerLink: string, 
   }
 }
 
-const createBattleLog = (timestamp: string, fighter1Name: string, fighter2Name: string, winner: string, events: BattleEvent[]): BattleLog => {
+const createBattleLog = (fighter1Name: string, fighter2Name: string, winner: string, events: BattleEvent[]): BattleLog => {
   return {
-    timestamp,
     fighter1: fighter1Name,
     fighter2: fighter2Name,
     winner,
@@ -60,7 +59,5 @@ export const fight = async (fighter1: FoodFighter, fighter2: FoodFighter): Promi
   const winner = await theFight
   clearInterval(intervalId1)
   clearInterval(intervalId2)
-  const dateTime = new Date()
-  //Todo: fix timezone
-  return createBattleLog(dateTime.toISOString(), fighter1.name, fighter2.name, winner, events)
+  return createBattleLog(fighter1.name, fighter2.name, winner, events)
 }

@@ -22,7 +22,7 @@ export const fetchFood = async (foodName: string): Promise<FineliFood | undefine
     q: foodName
   }
   const res = (await axios.get<FineliResponse>(baseUrl, { params: queryParams })).data
-  if (res) {
+  if (res?.length > 0) {
     const bestMatch = res.find(food => food.name.fi.toLowerCase() == foodName.toLowerCase())
     if (bestMatch) {
       return {
