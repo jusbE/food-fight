@@ -43,7 +43,7 @@ app.get('/fightResult', async (req, res) => {
   try {
     const food1 = String(req.query.name1)
     const food2 = String(req.query.name2)
-    const fightResult = getFightResult(food1, food2)
+    const fightResult = await getFightResult(food1, food2)
     if (fightResult) {
       res.send(fightResult);
     } else {
