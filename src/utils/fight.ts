@@ -27,7 +27,6 @@ const createBattleLog = (fighter1Name: string, fighter2Name: string, winner: str
 }
 
 export const fight = async (fighter1: FoodFighter, fighter2: FoodFighter): Promise<BattleLog> => {
-  //Todo: split code to smaller functions
   const events: BattleEvent[] = []
   let health1 = fighter1.health
   let health2 = fighter2.health

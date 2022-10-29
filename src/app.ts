@@ -8,9 +8,7 @@ const port = config.server.port;
 
 app.use(cors())
 
-//Todo: swagger doc
 app.get('/fighter', async (req, res) => {
-  //Todo: request validation'
   try {
     const foodName = String(req.query.name)
     const fighter = await getFighter(foodName)
@@ -20,14 +18,12 @@ app.get('/fighter', async (req, res) => {
       res.status(404).send('Fighter not found');
     }
   } catch (err) {
-    //TODO: create logger
     console.error(JSON.stringify(err))
     res.status(500).send('Internal error occured')
   }
 });
 
 app.get('/fighterNames', async (req, res) => {
-  //Todo: request validation
   try {
     const prefix = String(req.query.prefix)
     const fighterNames = await getFighterNames(prefix)
@@ -39,7 +35,6 @@ app.get('/fighterNames', async (req, res) => {
 });
 
 app.get('/fightResult', async (req, res) => {
-  //Todo: request validation
   try {
     const food1 = String(req.query.name1)
     const food2 = String(req.query.name2)

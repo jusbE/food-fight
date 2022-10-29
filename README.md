@@ -39,5 +39,6 @@ Run commands below in terminal, root of the project
 ```
 npm install
 npm run build
+npm run tests
 npm run start
 ```
